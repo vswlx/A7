@@ -1,0 +1,157 @@
+/*
+    File: css/JSONstyles.css
+    91.461 Assignment 5: Formatting Dynamic Text
+    Name: Brian Chiang
+    School: UMass Lowell Computer Science
+    Email: brian_chiang@student.uml.edu
+    Created: October 7, 2014 at 4:00 PM
+    Purpose: This is the style sheet for the webpage created for assignment 5.
+*/
+
+/* The following code for different font formats was taken from the textbook. */
+/* Format normal font type. */
+@font-face {
+    font-family: "Quicksand";
+    src: url('fonts/quicksand-regular-webfont.eot');
+    src: url('fonts/quicksand-regular-webfont.woff') format('woff'),
+         url('fonts/quicksand-regular-webfont.ttf') format('truetype'),
+         url('fonts/quicksand-regular-webfont.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Format italic font type. */
+@font-face {
+    font-family: "Quicksand";
+    src: url('fonts/quicksand-italic-webfont.eot');
+    src: url('fonts/quicksand-italic-webfont.woff') format('woff'),
+         url('fonts/quicksand-italic-webfont.ttf') format('truetype'),
+         url('fonts/quicksand-italic-webfont.svg') format('svg');
+    font-weight: normal;
+    font-style: italic;
+}
+
+/* Format bold font type. */
+@font-face {
+    font-family: "Quicksand";
+    src: url('fonts/quicksand-bold-webfont.eot');
+    src: url('fonts/quicksand-bold-webfont.woff') format('woff'),
+         url('fonts/quicksand-bold-webfont.ttf') format('truetype'),
+         url('fonts/quicksand-bold-webfont.svg') format('svg');
+    font-weight: bold;
+    font-style: normal;
+}
+
+/* Format bold & italic font type. */
+@font-face {
+    font-family: "Quicksand";
+    src: url('fonts/quicksand-bolditalic-webfont.eot');
+    src: url('fonts/quicksand-bolditalic-webfont.woff') format('woff'),
+         url('fonts/quicksand-bolditalic-webfont.ttf') format('truetype'),
+         url('fonts/quicksand-bolditalic-webfont.svg') format('svg');
+    font-weight: bold;
+    font-style: italic;
+}
+
+/* The following class will be used to format each paragraph. */
+.border {
+    padding: 10px;
+    margin-right: 25%;
+    margin-left: 25%;
+    border-right: 2px solid black;
+    border-left: 2px solid black;
+    padding-bottom: 10px;
+    margin-bottom: -20px;
+    background-color: #DAD4D4;
+}
+
+/* The following class will be used to format the first paragraph. */
+.topBorder {
+    border-top: 2px solid black;
+    padding-top: 0;
+    margin-right: 25%;
+    margin-left: 25%;
+    border-right: 2px solid black;
+    border-left: 2px solid black;
+    padding-bottom: 10px;
+    margin-bottom: -20px;
+    background-color: #DAD4D4;
+}
+
+/* The following class will be used to format the last paragraph. */
+.bottomBorder {
+    border-bottom: 2px solid black;
+    padding: 10px;
+    margin-right: 25%;
+    margin-left: 25%;
+    border-right: 2px solid black;
+    border-left: 2px solid black;
+    padding-bottom: 10px;
+    margin-bottom: -20px;
+    background-color: #DAD4D4;
+}
+
+/* Format how the title is displayed. */
+h1.title {
+    font-family: "Quicksand";
+    font-size: 60px;
+    color: #8b4513;
+    font-variant: small-caps;
+    padding-top: 5%;
+    margin-right: 25%;
+    margin-left: 25%;
+    text-align: center;
+}
+
+/* Format how the author is displayed. */
+h2.author {
+    font-family: "Quicksand";
+    font-variant: small-caps;
+    color: #8b4513;
+    text-align: center;
+    margin-right: 25%;
+    margin-left: 25%;
+    margin-bottom: -10px;
+}
+
+/* Format how the date is displayed. */
+h3.date {
+    font-family: "Quicksand";
+    font-variant: small-caps;
+    color: #8b4513;
+    margin-right: 25%;
+    margin-left: 25%;
+    margin-bottom: 5%;
+    text-align: center;
+}
+
+/* Format how and where the album cover is displayed. */
+.onLettingGoImg {
+    float: left;
+    margin-left: 5%;
+    margin-top: 0;
+    font-size: 12px;
+}
+
+/* Format the "note" pertaining to the .onLettingGoImg class. */
+.onLettingGoImg p:last-child {
+    font-family: "Quicksand";
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Format how and where the picture link to the lyrics is displayed. */
+.lyricsLink {
+    margin-right: 5%;
+    margin-top: -1%;
+    float: right;
+}
+
+/* Format the "note" pertaining to the lyrics picture link. */
+.lyricsLink p:last-child {
+    font-family: "Quicksand";
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+}
