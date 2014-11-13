@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+
+<!--
+  File: Assignment6.html
+  91.461 Assignment 6: Creating an Interactive Table
+  Name: Brian Chiang
+  School: UMass Lowell Computer Science
+  Email: brian_chiang@student.uml.edu
+  Created: October 23, 6:00 PM
+  Purpose: This file produces an interactive page that uses JavaScript to create a dynamic table
+-->
+
+    <title>Assignment 6</title>
+
+    <!-- Link to CSS file. -->
+    <link type="text/css" rel="stylesheet" href="CSS/A6CSS.css">
+    <!-- Import JQuery Library. -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Link to JavaScript file. -->
+    <script src="JS/AS6JS.js"></script>
+  </head>
+  <body>
+    <!-- Tell the user what to do. -->
+    <div class="instructions">
+      <p class="topBorder">Please enter four numbers to create a multiplication table.</p>
+      <p class="bottomBorder">The start number must be less than or equal to the end number.</p>
+    </div>
+
+    <!-- Display forms for user to input numbers. -->
+    <form id="frm" action="javascript:void(0)" onsubmit="print();">
+      <div class="form">
+        <p>Start value</p>
+        <input type="text" size="7" name="first" id="number1"> <br>
+        <p>End value</p>
+        <input type="text" size="7" name="second" id="number2"> <br>
+        <p>Start value</p>
+        <input type="text" size="7" name="third" id="number3"> <br>
+        <p>End value</p>
+        <input type="text" size="7" name="foruth" id="number4"> <br>
+      </div>
+
+    <!-- Display button to allow the user to enter their input. -->
+      <div class="submitButton">
+        <input type="submit" value="Enter">
+      </div>
+    </form>
+
+    <!-- Dynamic content goes here. -->
+    <div id="content"></div>
+  </body>
+</html>

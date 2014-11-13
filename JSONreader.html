@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+
+<!--
+  File: JSONreader.html
+  91.461 Assignment 5: Formatting Dynamic Text
+  Name: Brian Chiang
+  School: UMass Lowell Computer Science
+  Email: brian_chiang@student.uml.edu
+  Created: October 7, 2014 at 3:00 p.m.
+  Purpose: This file reads a JSON file and translates it into HTML for formatting.
+-->
+<!--*************************************************************************************
+  NOTE: All javascript code was taken from Professor Heines.  Some parts were modified
+  and these modifications are pointed out by comments.
+**************************************************************************************-->
+    <title>Assignment 5</title>
+  
+    <!-- CSS file that defines basic styles for the text. -->
+    <link type="text/css" rel="stylesheet" href="css/JSONstyles.css" />
+  
+    <!-- 
+      Load jQuery library from the Google Content Delivery Network (CDN)
+      see http://encosia.com/3-reasons-why-you-should-let-google-host-jquery-for-you/
+      however, note that you obviously must be online for this to work
+      alternatively, you can download jQuery and store it locally from
+      http://jquery.com/download/
+    -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+    <!-- Load the JSON file containing the desired text. -->
+    <script type="text/javascript">
+      var story;
+
+      // Note to advanced students:
+      //   Do *NOT* use the jQuery getJSON function here, because in this 
+      // application the AJAX call has to be synchronous (that is, we need to 
+      // wait for it to be done before continuing), and the getJSON function 
+      // is always asynchronous.  Reference:
+      // http://stackoverflow.com/questions/2765411/is-it-possible-to-set-asyncfalse-to-getjson-call
+      //   The other approach is to change the global jQuery ajaxSetup option, 
+      // but this is controversial, as discussed on the referenced page.
+      jQuery.ajax({
+        async: false,
+        dataType: "json",
+        url: "GreatestLie.json" ,
+        success: function( data ) {
+          story = data ;
+        }
+      });
+      
+      jQuery(document).ready( function() {
+        placeContent() ;
+      });
+    </script>
+  
+    <!-- Script to determine browser type and set first paragraph class appropriately. -->
+    <script type="text/javascript">
+      var strFirstParaClass = "" ;
+      var strNavString = navigator.userAgent ;
+      // console.log( navigator.userAgent ) ;
+      // console.log( strNavString ) ;
+      if ( strNavString.indexOf( "Firefox" ) !== -1 ) {
+        strFirstParaClass = "Firefox" ;
+      } else if ( strNavString.indexOf( "Chrome" ) !== -1 ) {
+        strFirstParaClass = "Chrome" ;
+      } else if ( strNavString.indexOf( "Safari" ) !== -1 ) {
+        strFirstParaClass = "Safari" ;
+      }
+    </script>
+  
+    <!-- Script to place JSON text in the placeholder on this page. -->
+    <script type="text/javascript">
+    // N.B.  This version *does* apply the CSS.
+      function placeContent() {
+        var strContent = "";
+
+        // Create dynamic content from JSON.
+        strContent += "<h1 class='title'>" + story.title + "</h1>" ;
+        strContent += "<h2 class='author'>Written by " + story.author + "</h2>" ;
+        strContent += "<h3 class='date'>Date written: " + story.date + "</h3>" ;
+
+        // Loop through all the paragraphs and sentences.
+        // EDIT: The first 'if' statement checks to see if the first paragraph is being processed.
+        // EDIT: The second 'if' statement checks to see if the last paragraph is being processed.
+        for ( var para = 0 ; para < story.text.paragraphs.length ; para++ ) {
+          if( para == 0)
+            strContent += "<p class='topBorder'\"" + strFirstParaClass + "\">";
+          if( para == story.text.paragraphs.length - 1 )
+            strContent += "<p class='bottomBorder'\"" + strFirstParaClass + "\">";
+          else
+            strContent += "<p class='border'\"" + strFirstParaClass + "\">" ;
+          for ( var sent = 0 ; sent < story.text.paragraphs[para].length ; sent++ ) {
+            strContent += story.text.paragraphs[para][sent] + "&nbsp; " ;
+          }
+          strContent += "</p>" ;
+        }
+
+        // Place dynamic content on page.
+        // document.getElementById( "content" ).innerHTML = strContent ;
+        jQuery("#content").html( strContent ) ;
+      }
+
+      // N.B.  This version does *NOT* apply the CSS!
+      function placeContent2() {
+        document.writeln( "<h1 class='title'>" + story.title + "</h1>" ) ;
+        document.writeln( "<h2 class='author'>by " + story.author + "</h2>" ) ;
+        document.writeln( "<h3 class='location'>" + story.location + "</h3>" ) ;
+        document.writeln( "<h3 class='date'>" + story.date + "</h3>" ) ;
+
+        for ( var para = 0 ; para < story.text.paragraphs.length ; para++ ) {
+          document.writeln( "<p>" ) ;
+          for ( var sent = 0 ; sent < story.text.paragraphs[para].length ; sent++ ) {
+            document.writeln( story.text.paragraphs[para][sent] + "&nbsp; " ) ;
+          }
+          document.writeln( "</p>" ) ;
+        }
+      }
+    </script>
+  </head>
+
+  <body>
+    <!-- Static content. -->
+    <!-- Display a picture link to the album the song is in. -->
+    <div class="onLettingGoImg">
+      <p><a href=http://songmeanings.com/albums/view/tracks/192233/><img src="img/OnLettingGo.jpg" alt="albumCover"></a></p>
+      <p>On Letting Go</p>
+    </div>
+  
+    <!-- Display a picture link to the lyrics of the song. -->
+    <div class="lyricsLink">
+      <p><a href=http://songmeanings.com/songs/view/3530822107858663410/><img src="img/lyricslink.jpg" alt="lyricsLink"></a></p>
+      <p>Link to song lyrics</p>
+    </div>
+
+    <!-- Dynamic content. -->
+    <div id="content"></div>
+  </body>
+</html>
